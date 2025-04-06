@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: resume-builder
+  labels:
+    app: resume-builder
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: resume-builder
+  template:
+    metadata:
+      labels:
+        app: resume-builder
+    spec:
+      containers:
+      - name: resume-builder
+        image: abhiram3046/resume-builder:$GIT_COMMIT # Use the GIT_COMMIT tag here
+        ports:
+        - containerPort: 5173
+        env:
+        - name: VITE_SUPABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: supabase-secrets
+              key: VITE_SUPABASE_URL
+        - name: VITE_SUPABASE_ANON_KEY
+          valueFrom:
+            secretKeyRef:
+              name: supabase-secrets
+              key: VITE_SUPABASE_ANON_KEY
