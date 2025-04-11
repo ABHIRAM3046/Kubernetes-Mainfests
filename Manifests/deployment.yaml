@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: resume-builder
-        image: abhiram3046/resume-builder:$GIT_COMMIT # Use the GIT_COMMIT tag here
+        image: abhiram3046/resume-builder:latest # Use the GIT_COMMIT tag here
         ports:
         - containerPort: 5173
         env:
