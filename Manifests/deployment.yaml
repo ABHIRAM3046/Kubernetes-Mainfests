@@ -18,7 +18,7 @@ spec:
       - name: resume-builder
         image: abhiram3046/resume-builder:latest # Use the GIT_COMMIT tag here
         ports:
-        - containerPort: 5173
+        - containerPort: 4173
         env:
         - name: VITE_SUPABASE_URL
           valueFrom:
